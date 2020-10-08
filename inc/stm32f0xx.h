@@ -60,7 +60,20 @@
 #ifndef assert_param
 #define assert_param(expr) ((void)0)
 #endif
-  
+
+#ifndef ARRAY_SIZE
+#define ARRAY_SIZE(a)		(sizeof(a) / sizeof(*a))
+#endif
+
+#ifndef BIT
+#define BIT(a)			(1 << (a))
+#endif
+
+#define BIT_SET(reg, bit)	(reg |= (bit))
+#define BIT_CLR(reg, bit)	(reg &= ~(bit))
+#define WAIT_BIT_SET(reg, bit)	while (!(reg & bit))
+#define WAIT_BIT_CLR(reg, bit)	while (reg & bit)
+
 /** @addtogroup Library_configuration_section
   * @{
   */
